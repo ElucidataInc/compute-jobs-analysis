@@ -45,9 +45,9 @@ jobs:
         echo 'set timeout -1' >> login.sh
         echo 'spawn polly login' >> login.sh
         echo 'expect "Enter user name:"' >> login.sh
-        echo 'send -- "$POLLY_USER_NAME\r"' >> login.sh
+        echo 'send -- "$env(POLLY_USER_NAME)\r"' >> login.sh
         echo 'expect "Enter password:"' >> login.sh
-        echo 'send -- "Newton123!\n"' >> login.sh
+        echo 'send -- "$env(POLLY_USER_PASSWORD)\n"' >> login.sh
         echo 'expect eof' >> login.sh
         chmod +x ./login.sh
         ./login.sh
