@@ -38,3 +38,4 @@ jobs:
     - name: npm install, build and test
       run: |
         sudo npm install -g @elucidatainc/pollycli
+        printf "${{ github.event.inputs.username }}\n${{ github.event.inputs.password }}" | polly login
