@@ -39,4 +39,5 @@ jobs:
       run: |
         sudo npm install -g @elucidatainc/pollycli
         POLLY_USER_NAME=${{ github.event.inputs.username }}
-        printf "$POLLY_USER_NAME\n$DEV_CIRCLECI_PASSWORD" | polly login
+        POLLY_USER_PASSWORD=${{ github.event.inputs.password }}
+        printf "$POLLY_USER_NAME\n$POLLY_USER_PASSWORD" | polly login
