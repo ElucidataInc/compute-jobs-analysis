@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container" style="width: 90%;">
+    <div class="row">
+      <h2 id="text-heading" class="col-md-12" style="text-align: center;"></h2>
+      <div class="col-md-4">
+        <div id="pie-chart" style="width:600px;height:250px;"></div>
+      </div>
+      <div class="col-md-8">
+        <div id="histogram1"></div>
+        <div id="histogram2"></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js">
+  </script>
+  <script id="input-data">
+const fullData = [
+  {
+    "created_ts": 1595688010693,
+    "ended_ts": 1595688054632,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-95a420de7a47431d9a07fb0657196eab-bhrgh_compute-prod_5803-95a420de7a47431d9a07fb0657196eab"
+    ],
+    "started_ts": 1595688018591,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "95a420de7a47431d9a07fb0657196eab"
+  },
+  {
+    "created_ts": 1595688005973,
+    "ended_ts": 1595688057330,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-4f096623578c4b4088011096b5db0fa5-vhf6k_compute-prod_5803-4f096623578c4b4088011096b5db0fa5"
+    ],
+    "started_ts": 1595688017862,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "4f096623578c4b4088011096b5db0fa5"
+  },
+  {
+    "created_ts": 1595688010928,
+    "ended_ts": 1595688060287,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-1f1f16b911c840da8ef28bbbfeac6f39-67wsb_compute-prod_5803-1f1f16b911c840da8ef28bbbfeac6f39"
+    ],
+    "started_ts": 1595688018537,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "1f1f16b911c840da8ef28bbbfeac6f39"
+  },
+  {
+    "created_ts": 1595688006626,
+    "ended_ts": 1595688093831,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-e0df0a7b1db047fa866339e55598c80c-wzdnc_compute-prod_5803-e0df0a7b1db047fa866339e55598c80c"
+    ],
+    "started_ts": 1595688053421,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "e0df0a7b1db047fa866339e55598c80c"
+  },
+  {
+    "created_ts": 1595688011195,
+    "ended_ts": 1595688060085,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-c1c9276c3c9f4e13a9294538e82a69db-lxl9p_compute-prod_5803-c1c9276c3c9f4e13a9294538e82a69db"
+    ],
+    "started_ts": 1595688020110,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "c1c9276c3c9f4e13a9294538e82a69db"
+  },
+  {
+    "created_ts": 1595688011435,
+    "ended_ts": 1595688094763,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-e15e9dd3cc4a4515be44ef715da20017-kmzwt_compute-prod_5803-e15e9dd3cc4a4515be44ef715da20017"
+    ],
+    "started_ts": 1595688057917,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "e15e9dd3cc4a4515be44ef715da20017"
+  },
+  {
+    "created_ts": 1595688014728,
+    "ended_ts": 1595688255568,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-a29bf4baf8f043e584882535100f3c0e-ln7cm_compute-prod_5803-a29bf4baf8f043e584882535100f3c0e"
+    ],
+    "started_ts": 1595688206529,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "a29bf4baf8f043e584882535100f3c0e"
+  },
+  {
+    "created_ts": 1595688014740,
+    "ended_ts": 1595688246187,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-227f91b1bf18424abaf65f08d2be1061-gw9sd_compute-prod_5803-227f91b1bf18424abaf65f08d2be1061"
+    ],
+    "started_ts": 1595688172020,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "227f91b1bf18424abaf65f08d2be1061"
+  },
+  {
+    "created_ts": 1595688010339,
+    "ended_ts": 1595688162300,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-a33e4963cf354f729c8a9f5db8935993-ggzzf_compute-prod_5803-a33e4963cf354f729c8a9f5db8935993"
+    ],
+    "started_ts": 1595688124504,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "a33e4963cf354f729c8a9f5db8935993"
+  },
+  {
+    "created_ts": 1595688010578,
+    "ended_ts": 1595688257902,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-61aba5dc981449efb82a518558d06b46-dlhdd_compute-prod_5803-61aba5dc981449efb82a518558d06b46"
+    ],
+    "started_ts": 1595688206615,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "61aba5dc981449efb82a518558d06b46"
+  },
+  {
+    "created_ts": 1595688010521,
+    "ended_ts": 1595688254730,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-d3221dbdfdb842ada4277723f3039bfd-tqfgp_compute-prod_5803-d3221dbdfdb842ada4277723f3039bfd"
+    ],
+    "started_ts": 1595688206546,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "d3221dbdfdb842ada4277723f3039bfd"
+  },
+  {
+    "created_ts": 1595688010674,
+    "ended_ts": 1595688252577,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-c0279e84e2fc4eec91d225c5b2794eba-nhjhq_compute-prod_5803-c0279e84e2fc4eec91d225c5b2794eba"
+    ],
+    "started_ts": 1595688189743,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "c0279e84e2fc4eec91d225c5b2794eba"
+  },
+  {
+    "created_ts": 1595688015276,
+    "ended_ts": 1595688249344,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-5400968cb58b46178ace5bed461c2feb-z5xkn_compute-prod_5803-5400968cb58b46178ace5bed461c2feb"
+    ],
+    "started_ts": 1595688180911,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "5400968cb58b46178ace5bed461c2feb"
+  },
+  {
+    "created_ts": 1595688015389,
+    "ended_ts": 1595688249151,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-90bb550e8f2b40c5a522f238c8dca19f-g4x6p_compute-prod_5803-90bb550e8f2b40c5a522f238c8dca19f"
+    ],
+    "started_ts": 1595688189118,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "90bb550e8f2b40c5a522f238c8dca19f"
+  },
+  {
+    "created_ts": 1595688015503,
+    "ended_ts": 1595688249009,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-9639886d9752426ba05388f84fbdcb63-2sfcs_compute-prod_5803-9639886d9752426ba05388f84fbdcb63"
+    ],
+    "started_ts": 1595688182161,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "9639886d9752426ba05388f84fbdcb63"
+  },
+  {
+    "created_ts": 1595688015524,
+    "ended_ts": 1595688247183,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-9bfdcb0c953e4ea2a0153505bc3a2083-kpvzf_compute-prod_5803-9bfdcb0c953e4ea2a0153505bc3a2083"
+    ],
+    "started_ts": 1595688179368,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "9bfdcb0c953e4ea2a0153505bc3a2083"
+  },
+  {
+    "created_ts": 1595688018580,
+    "ended_ts": 1595688250651,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-3fbe55926ecb470e9f8b87bfc3e8d309-bs45n_compute-prod_5803-3fbe55926ecb470e9f8b87bfc3e8d309"
+    ],
+    "started_ts": 1595688189450,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "3fbe55926ecb470e9f8b87bfc3e8d309"
+  },
+  {
+    "created_ts": 1595688018598,
+    "ended_ts": 1595688161628,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-b32b0df6b2a149c69040cabf13932950-tbpgl_compute-prod_5803-b32b0df6b2a149c69040cabf13932950"
+    ],
+    "started_ts": 1595688123819,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "b32b0df6b2a149c69040cabf13932950"
+  },
+  {
+    "created_ts": 1595688018704,
+    "ended_ts": 1595688246607,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-2650b3954cfa4261a3ef13c6703e6bbe-wp4dg_compute-prod_5803-2650b3954cfa4261a3ef13c6703e6bbe"
+    ],
+    "started_ts": 1595688209104,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "2650b3954cfa4261a3ef13c6703e6bbe"
+  },
+  {
+    "created_ts": 1595688018933,
+    "ended_ts": 1595688189625,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-a7bd177cd45c4b7bb9522ea693486cb8-z88fz_compute-prod_5803-a7bd177cd45c4b7bb9522ea693486cb8"
+    ],
+    "started_ts": 1595688088848,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "a7bd177cd45c4b7bb9522ea693486cb8"
+  }
+];
+  </script>
+  <script id='custom-javascript'>
+    (function () {
+      const reqData = window.location.href.split("/")[window.location.href.split("/").length - 1].split('-');
+      document.getElementById('text-heading').innerHTML = `Simulating ${fullData.length} jobs with ${reqData[3]} user and each running ${reqData[5]} jobs which takes 30 seconds`
+      const x = [];
+      for (var i = 0; i < fullData.length; i++) {
+        if (fullData[i].state == 'SUCCESS') {
+          x[i] = Math.round((fullData[i].started_ts - fullData[i].created_ts) / 1000);
+        }
+      }
+
+      const trace = {
+        x: x,
+        type: 'histogram',
+        xbins: {
+          size: 10,
+          end: Math.max(...x) + 10,
+          start: 0
+        }
+      };
+      const layout = {
+        title: 'Resource allocation time',
+        bargap: 0.05,
+        xaxis: {
+          title: "time (sec)",
+          tickmode: "linear", //  If "linear", the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick`
+          tick0: 0,
+          dtick: 10
+        },
+        yaxis: {
+          title: "Count"
+        }
+      };
+      const data = [trace];
+      Plotly.newPlot('histogram1', data, layout);
+
+    })();
+
+    (function () {
+      const x = [];
+      for (var i = 0; i < fullData.length; i++) {
+        if (fullData[i].state == 'SUCCESS') {
+          x[i] = Math.round((fullData[i].ended_ts - fullData[i].started_ts) / 1000) - 30;
+        }
+      }
+
+      const trace = {
+        x: x,
+        type: 'histogram',
+        xbins: {
+          size: 10,
+          end: Math.max(...x) + 10,
+          start: 0
+        }
+      };
+      const layout = {
+        title: 'Docker pull time + Status update time',
+        bargap: 0.05,
+        xaxis: {
+          title: "time (sec)",
+          tickmode: "linear", //  If "linear", the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick`
+          tick0: 0,
+          dtick: 10
+        },
+        yaxis: {
+          title: "Count"
+        }
+      };
+      const data = [trace];
+      Plotly.newPlot('histogram2', data, layout);
+
+    })();
+
+    (function () {
+      let x = {};
+      for (var i = 0; i < fullData.length; i++) {
+        if (Object.keys(x).indexOf(fullData[i].state) < 0) {
+          x[fullData[i].state] = 1;
+        } else {
+          x[fullData[i].state] += 1;
+        }
+      }
+      const finalKeys = Object.keys(x);
+      const finalKeyData = [];
+      for (var i = 0; i < finalKeys.length; i++) {
+        finalKeyData.push(x[finalKeys[i]])
+      }
+      const data = [{
+        values: finalKeyData,
+        labels: finalKeys,
+        type: 'pie'
+      }];
+
+      const layout = {
+        title: 'Different state %',
+        height: 400,
+        width: 500
+      };
+      Plotly.newPlot('pie-chart', data, layout);
+    })()
+  </script>
+</body>
+
+</html>
