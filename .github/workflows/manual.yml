@@ -40,7 +40,14 @@ jobs:
         sudo npm install -g @elucidatainc/pollycli
         export POLLY_USER_NAME=${{ github.event.inputs.username }}
         export POLLY_USER_PASSWORD=${{ github.event.inputs.password }}
-        echo '#/bin/bash' > login.sh
-        echo 'printf "$POLLY_USER_NAME\n$POLLY_USER_PASSWORD" | polly login' >> login.sh
+        sudo apt-get install expect
+        echo '#!/usr/bin/expect -f' > login.sh
+        echo 'set timeout -1' >> login.sh
+        echo 'spawn polly login' >> login.sh
+        echo 'expect "Enter user name:"' >> login.sh
+        echo 'send -- "$POLLY_USER_NAME\r"' >> login.sh
+        echo 'expect "Enter password:"' >> login.sh
+        echo 'send -- "Newton123!\n"' >> login.sh
+        echo 'expect eof' >> login.sh
         chmod +x ./login.sh
         ./login.sh
