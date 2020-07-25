@@ -7,7 +7,11 @@
         let htmlString = '<ul>';
         for (let file of data) {
           if(file.name !== 'index.html') {
-            htmlString += `<li><a href="/compute-jobs-analysis/${file.path}">${file.name}</a></li>`;
+            if (file.name == 'input') {
+              htmlString += `<li><a href="/compute-jobs-analysis/${file.path}">Job informstion</a></li>`;
+            } else if (file.name == 'output') {
+              htmlString += `<li><a href="/compute-jobs-analysis/${file.path}">Plots</a></li>`;
+            }
           }
         }
         htmlString += '</ul>';
