@@ -40,4 +40,7 @@ jobs:
         sudo npm install -g @elucidatainc/pollycli
         POLLY_USER_NAME=${{ github.event.inputs.username }}
         POLLY_USER_PASSWORD=${{ github.event.inputs.password }}
-        echo $(printf "$POLLY_USER_NAME\nedqdqwdqwdqwdqwdqw" | polly login)
+        echo '#/bin/bash' > login.sh
+        echo 'printf "$POLLY_USER_NAME\n$POLLY_USER_PASSWORD" | polly login' >> login.sh
+        chmod +x ./login.sh
+        ./login.sh
