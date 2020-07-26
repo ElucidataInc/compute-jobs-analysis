@@ -70,16 +70,16 @@ jobs:
         sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/* ~/pollycli/
         ls ~/pollycli
         echo "ddd"
-        mkdir -p ~/pollyci/tests/jobs
-        mkdir -p ~/pollyci/tests/jobs/results/
-        cp -R tests/* ~/pollyci/tests/jobs/
-        ls ~/pollyci/tests/jobs/
-        cp -R input ~/pollyci/tests/jobs/results/
-        cp -R output ~/pollyci/tests/jobs/results/
+        mkdir -p ~/pollycli/tests/jobs
+        mkdir -p ~/pollycli/tests/jobs/results/
+        cp -R tests/* ~/pollycli/tests/jobs/
+        ls ~/pollycli/tests/jobs/
+        cp -R input ~/pollycli/tests/jobs/results/
+        cp -R output ~/pollycli/tests/jobs/results/
         pwd
-        ls ~/pollyci/
-        ls ~/pollyci/tests/
-        ls ~/pollyci/tests/results
+        ls ~/pollycli/
+        ls ~/pollycli/tests/
+        ls ~/pollycli/tests/results
         #which polly
         #sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/ ~/pollycli
         #cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
