@@ -81,6 +81,8 @@ jobs:
         mkdir -p $(pwd)/input/$DATE_NOW_POLLY
         cp $TEMP_POLLY_JOB_FILE $(pwd)/input/$DATE_NOW_POLLY/
         git status
+        git config --global user.email ${{ github.event.inputs.username }}
+        git config --global user.name ${{ github.event.inputs.username }}
         git add .
         git commit -m "Adding a new job file ${TEMP_POLLY_JOB_FILE}"
         git fetch origin master
