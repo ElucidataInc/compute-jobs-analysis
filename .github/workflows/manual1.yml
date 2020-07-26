@@ -67,16 +67,16 @@ jobs:
         echo  ~/pollycli/test/jobs/results/${{ github.event.inputs.path_to_logs }}
         cat  ~/pollycli/test/jobs/results/${{ github.event.inputs.path_to_logs }}
         cd ~/pollycli && sudo chmod 777 -R ~/pollycli && npm install && npm run create-data  ~/pollycli/test/jobs/results/${{ github.event.inputs.path_to_logs }}
-        #TEMP_POLLY_JOB_FILE=$(cat /home/runner/pollycli/test/jobs/filename.txt)
-        #cd -
-        #DATE_NOW_POLLY=`date +%d-%m-%Y`
-        #mkdir -p $(pwd)/input/$DATE_NOW_POLLY
-        #cp $TEMP_POLLY_JOB_FILE $(pwd)/input/$DATE_NOW_POLLY/
-        #cp $(pwd)/input/index.html $(pwd)/input/$DATE_NOW_POLLY/index.html
-        #git status
-        #git config --global user.email ${{ github.event.inputs.username }}
-        #git config --global user.name ${{ github.event.inputs.username }}
-        #git add .
-        #git commit -m "Adding a new job file ${TEMP_POLLY_JOB_FILE}"
-        #git fetch origin master
+        TEMP_POLLY_JOB_FILE=$(cat /home/runner/pollycli/test/jobs/outputfile.txt)
+        cd -
+        DATE_NOW_POLLY=`date +%d-%m-%Y`
+        mkdir -p $(pwd)/output/$DATE_NOW_POLLY
+        cp $TEMP_POLLY_JOB_FILE $(pwd)/output/$DATE_NOW_POLLY/
+        cp $(pwd)/input/index.html $(pwd)/output/$DATE_NOW_POLLY/index.html
+        git status
+        git config --global user.email ${{ github.event.inputs.username }}
+        git config --global user.name ${{ github.event.inputs.username }}
+        git add .
+        git commit -m "Adding a new job file ${TEMP_POLLY_JOB_FILE}"
+        git fetch origin master
         #git push origin HEAD:master
