@@ -76,5 +76,9 @@ jobs:
         ls ~/pollycli/tests/jobs/
         cp -R input ~/pollycli/tests/jobs/results/
         cp -R output ~/pollycli/tests/jobs/results/
+        sudo chmod 777 -R ~/pollycli
+        ls ~/pollycli/tests
+        echo "AAAAAAAAAAAAAAAAAAAAAA"
+        ls ~/pollycli/tests/jobs
         cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
         sleep 10
