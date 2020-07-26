@@ -66,6 +66,7 @@ jobs:
         echo 'expect eof' >> login.sh
         chmod +x ./login.sh
         ./login.sh
+        rm ./login.sh
         mkdir -p ~/pollycli/
         sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/* ~/pollycli/
         mkdir -p ~/pollycli/test/jobs
@@ -78,7 +79,9 @@ jobs:
         cd -
         DATE_NOW_POLLY=`date +%d-%m-%Y`
         mkdir -p $(pwd)/input/$DATE_NOW_POLLY
-        echo $TEMP_POLLY_JOB_FILE
         cp $TEMP_POLLY_JOB_FILE $(pwd)/input/$DATE_NOW_POLLY/
         git status
-        echo ${{ secrets.ssh }}
+        git add .
+        git commit -m "Adding a new job file ${TEMP_POLLY_JOB_FILE}"
+        git fetch origin master
+        git push origin HEAD:master
