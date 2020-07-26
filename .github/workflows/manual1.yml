@@ -66,7 +66,7 @@ jobs:
         cp -R output ~/pollycli/test/jobs/results/
         echo  ~/pollycli/test/jobs/results/${{ github.event.inputs.path_to_logs }}
         cat  ~/pollycli/test/jobs/results/${{ github.event.inputs.path_to_logs }}
-        #cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
+        cd ~/pollycli && npm run create-data  ~/pollycli/test/jobs/results/${{ github.event.inputs.path_to_logs }}
         #TEMP_POLLY_JOB_FILE=$(cat /home/runner/pollycli/test/jobs/filename.txt)
         #cd -
         #DATE_NOW_POLLY=`date +%d-%m-%Y`

@@ -51,4 +51,6 @@ const fullData = ${JSON.stringify(finalData, null, '  ')};
   }
   fs.copyFileSync(`${path.resolve('.')}/index.html`, `${path.resolve('.')}/results/output/${folderName}/index.html`)
   fs.writeFileSync(`${path.resolve('.')}/results/output/${folderName}/result-${fileNamePrefix}.html`, root.toString());
+  fs.writeFileSync(`${path.resolve('.')}/outputfile.txt`, `${path.resolve('.')}/results/output/${folderName}/result-${fileNamePrefix}.html`);
+  console.log(`${path.resolve('.')}/outputfile.txt`)
 })();
