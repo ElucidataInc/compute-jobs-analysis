@@ -88,3 +88,81 @@ jobs:
         git commit -m "Adding a new job file ${TEMP_POLLY_JOB_FILE}"
         git fetch origin master
         git push origin HEAD:master
+
+name: Get the plots
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      username:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Polly user name'
+        # Input has to be provided for the workflow to run
+        required: true
+      password:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Polly password'
+        # Input has to be provided for the workflow to run
+        required: true
+      path_of_logs:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Path to logs to create plot'
+        # Input has to be provided for the workflow to run
+        required: true
+    
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  greet:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@main
+    - name: Use Node.js 10
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10
+
+    - name: Installing dependencies and running bust jobs and saving the logs for information 
+      run: |
+        sudo npm install -g @elucidatainc/pollycli
+        export POLLY_USER_NAME=${{ github.event.inputs.username }}
+        export POLLY_USER_PASSWORD=${{ github.event.inputs.password }}
+        sudo apt-get install expect
+        echo '#!/usr/bin/expect -f' > login.sh
+        echo 'set timeout -1' >> login.sh
+        echo 'spawn polly login' >> login.sh
+        echo 'expect "Enter user name:"' >> login.sh
+        echo 'send -- "$env(POLLY_USER_NAME)\r"' >> login.sh
+        echo 'expect "Enter password:"' >> login.sh
+        echo 'send -- "$env(POLLY_USER_PASSWORD)\n"' >> login.sh
+        echo 'expect eof' >> login.sh
+        chmod +x ./login.sh
+        ./login.sh
+        rm ./login.sh
+        mkdir -p ~/pollycli/
+        sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/* ~/pollycli/
+        mkdir -p ~/pollycli/test/jobs
+        mkdir -p ~/pollycli/test/jobs/results/
+        cp -R tests/* ~/pollycli/test/jobs/
+        cp -R input ~/pollycli/test/jobs/results/
+        cp -R output ~/pollycli/test/jobs/results/
+        echo ~/pollycli/test/jobs/results/${{ github.event.inputs.path_of_logs }}
+        cat ~/pollycli/test/jobs/results/${{ github.event.inputs.path_of_logs }}
+        # cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
+        # TEMP_POLLY_JOB_FILE=$(cat /home/runner/pollycli/test/jobs/filename.txt)
+        # cd -
+        # DATE_NOW_POLLY=`date +%d-%m-%Y`
+        # mkdir -p $(pwd)/input/$DATE_NOW_POLLY
+        # cp $TEMP_POLLY_JOB_FILE $(pwd)/input/$DATE_NOW_POLLY/
+        # cp $(pwd)/input/index.html $(pwd)/input/$DATE_NOW_POLLY/index.html
+        # git status
+        # git config --global user.email ${{ github.event.inputs.username }}
+        # git config --global user.name ${{ github.event.inputs.username }}
+        # git add .
+        # git commit -m "Adding a new job file ${TEMP_POLLY_JOB_FILE}"
+        # git fetch origin master
+        # git push origin HEAD:master
