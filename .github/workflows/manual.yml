@@ -76,11 +76,5 @@ jobs:
         ls ~/pollycli/tests/jobs/
         cp -R input ~/pollycli/tests/jobs/results/
         cp -R output ~/pollycli/tests/jobs/results/
-        pwd
-        ls ~/pollycli/
-        ls ~/pollycli/tests/
-        ls ~/pollycli/tests/jobs/
-        ls ~/pollycli/tests/jobs/results
-        #which polly
-        #sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/ ~/pollycli
-        #cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
+        cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
+        sleep 10
