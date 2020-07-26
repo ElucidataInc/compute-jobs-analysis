@@ -66,8 +66,12 @@ jobs:
         echo 'expect eof' >> login.sh
         chmod +x ./login.sh
         ./login.sh
-        pwd
-        ls
-        #which polly
-        #sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/ ~/pollycli
-        #cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
+        mkdir -p ~/pollycli/
+        sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/* ~/pollycli/
+        mkdir -p ~/pollycli/test/jobs
+        mkdir -p ~/pollycli/test/jobs/results/
+        cp -R tests/* ~/pollycli/test/jobs/
+        cp -R input ~/pollycli/test/jobs/results/
+        cp -R output ~/pollycli/test/jobs/results/
+        cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
+        sleep 10
