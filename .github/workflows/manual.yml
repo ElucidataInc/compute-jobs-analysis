@@ -71,8 +71,8 @@ jobs:
         mkdir -p ~/pollyci/tests/jobs/results/input
         mkdir -p ~/pollyci/tests/jobs/results/output
         cp -R tests ~/pollyci/tests/jobs
-        cp -R tests/input ~/pollyci/tests/jobs/results/input
-        cp -R tests/output ~/pollyci/tests/jobs/results/output
+        cp -R input ~/pollyci/tests/jobs/results/input
+        cp -R output ~/pollyci/tests/jobs/results/output
         pwd
         ls ~/pollyci/
         ls ~/pollyci/tests/
