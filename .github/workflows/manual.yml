@@ -52,4 +52,5 @@ jobs:
         chmod +x ./login.sh
         ./login.sh
         which polly
-        cd /usr/local/lib/node_modules/@elucidatainc/pollycli/ && npm run test-bust 1 1 5803
+        sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/ ~/pollycli
+        cd ~/pollycli && ls
