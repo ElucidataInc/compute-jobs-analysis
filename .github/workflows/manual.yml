@@ -51,3 +51,4 @@ jobs:
         echo 'expect eof' >> login.sh
         chmod +x ./login.sh
         ./login.sh
+        which polly
