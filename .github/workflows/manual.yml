@@ -66,13 +66,13 @@ jobs:
         echo 'expect eof' >> login.sh
         chmod +x ./login.sh
         ./login.sh
-        sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/ ~/pollycli
+        sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/* ~/pollycli/
         mkdir -p ~/pollyci/tests/jobs
         mkdir -p ~/pollyci/tests/jobs/results/input
         mkdir -p ~/pollyci/tests/jobs/results/output
-        cp -R tests ~/pollyci/tests/jobs
-        cp -R input ~/pollyci/tests/jobs/results/input
-        cp -R output ~/pollyci/tests/jobs/results/output
+        cp -R tests/* ~/pollyci/tests/jobs/
+        cp -R input ~/pollyci/tests/jobs/results/
+        cp -R output ~/pollyci/tests/jobs/results/
         pwd
         ls ~/pollyci/
         ls ~/pollyci/tests/
