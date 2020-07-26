@@ -71,9 +71,9 @@ jobs:
         ls ~/pollycli
         echo "ddd"
         mkdir -p ~/pollyci/tests/jobs
-        mkdir -p ~/pollyci/tests/jobs/results/input
-        mkdir -p ~/pollyci/tests/jobs/results/output
+        mkdir -p ~/pollyci/tests/jobs/results/
         cp -R tests/* ~/pollyci/tests/jobs/
+        ls ~/pollyci/tests/jobs/
         cp -R input ~/pollyci/tests/jobs/results/
         cp -R output ~/pollyci/tests/jobs/results/
         pwd
