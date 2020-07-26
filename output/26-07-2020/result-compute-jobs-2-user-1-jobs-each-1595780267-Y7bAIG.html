@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container" style="width: 90%;">
+    <div class="row">
+      <h2 id="text-heading" class="col-md-12" style="text-align: center;"></h2>
+      <div class="col-md-4">
+        <div id="pie-chart" style="width:600px;height:250px;"></div>
+      </div>
+      <div class="col-md-8">
+        <div id="histogram1"></div>
+        <div id="histogram2"></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js">
+  </script>
+  <script id="input-data">
+const fullData = [
+  {
+    "created_ts": 1595780270445,
+    "ended_ts": 1595780316474,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-cae1d9d6f30f4747b376134357257465-8x7pw_compute-prod_5803-cae1d9d6f30f4747b376134357257465"
+    ],
+    "started_ts": 1595780280006,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "cae1d9d6f30f4747b376134357257465"
+  },
+  {
+    "created_ts": 1595780275255,
+    "ended_ts": 1595780317711,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5803-a9817713d4604866aaad998bdf7a46c0-97tz7_compute-prod_5803-a9817713d4604866aaad998bdf7a46c0"
+    ],
+    "started_ts": 1595780280470,
+    "state": "SUCCESS",
+    "creator_id": 9,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5803,
+    "job_id": "a9817713d4604866aaad998bdf7a46c0"
+  }
+];
+  </script>
+  <script id='custom-javascript'>
+    (function () {
+      const reqData = window.location.href.split("/")[window.location.href.split("/").length - 1].split('-');
+      document.getElementById('text-heading').innerHTML = `Simulating ${fullData.length} jobs with ${reqData[3]} user and each running ${reqData[5]} jobs which takes 30 seconds`
+      const x = [];
+      for (var i = 0; i < fullData.length; i++) {
+        if (fullData[i].state == 'SUCCESS') {
+          x[i] = Math.round((fullData[i].started_ts - fullData[i].created_ts) / 1000);
+        }
+      }
+
+      const trace = {
+        x: x,
+        type: 'histogram',
+        xbins: {
+          size: 10,
+          end: Math.max(...x) + 10,
+          start: 0
+        }
+      };
+      const layout = {
+        title: 'Resource allocation time',
+        bargap: 0.05,
+        xaxis: {
+          title: "time (sec)",
+          tickmode: "linear", //  If "linear", the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick`
+          tick0: 0,
+          dtick: 10
+        },
+        yaxis: {
+          title: "Count"
+        }
+      };
+      const data = [trace];
+      Plotly.newPlot('histogram1', data, layout);
+
+    })();
+
+    (function () {
+      const x = [];
+      for (var i = 0; i < fullData.length; i++) {
+        if (fullData[i].state == 'SUCCESS') {
+          x[i] = Math.round((fullData[i].ended_ts - fullData[i].started_ts) / 1000) - 30;
+        }
+      }
+
+      const trace = {
+        x: x,
+        type: 'histogram',
+        xbins: {
+          size: 10,
+          end: Math.max(...x) + 10,
+          start: 0
+        }
+      };
+      const layout = {
+        title: 'Docker pull time + Status update time',
+        bargap: 0.05,
+        xaxis: {
+          title: "time (sec)",
+          tickmode: "linear", //  If "linear", the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick`
+          tick0: 0,
+          dtick: 10
+        },
+        yaxis: {
+          title: "Count"
+        }
+      };
+      const data = [trace];
+      Plotly.newPlot('histogram2', data, layout);
+
+    })();
+
+    (function () {
+      let x = {};
+      for (var i = 0; i < fullData.length; i++) {
+        if (Object.keys(x).indexOf(fullData[i].state) < 0) {
+          x[fullData[i].state] = 1;
+        } else {
+          x[fullData[i].state] += 1;
+        }
+      }
+      const finalKeys = Object.keys(x);
+      const finalKeyData = [];
+      for (var i = 0; i < finalKeys.length; i++) {
+        finalKeyData.push(x[finalKeys[i]])
+      }
+      const data = [{
+        values: finalKeyData,
+        labels: finalKeys,
+        type: 'pie'
+      }];
+
+      const layout = {
+        title: 'Different state %',
+        height: 400,
+        width: 500
+      };
+      Plotly.newPlot('pie-chart', data, layout);
+    })()
+  </script>
+</body>
+
+</html>
