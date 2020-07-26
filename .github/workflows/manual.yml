@@ -18,6 +18,21 @@ on:
         description: 'Polly password'
         # Input has to be provided for the workflow to run
         required: true
+      how_many_users:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Simulate how many users'
+        # Input has to be provided for the workflow to run
+        required: true
+      each_users_how_many_jobs:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Each users how many jobs'
+        # Input has to be provided for the workflow to run
+        required: true
+      workspace_id:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Polly workspace id to run the simulation'
+        # Input has to be provided for the workflow to run
+        required: true
     
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -52,3 +67,5 @@ jobs:
         chmod +x ./login.sh
         ./login.sh
         which polly
+        sudo cp -R /usr/local/lib/node_modules/@elucidatainc/pollycli/ ~/pollycli
+        cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
