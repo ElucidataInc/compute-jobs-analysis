@@ -13,4 +13,4 @@ while [ $COMPLETE_DATA -ne "$(($1 * $2))" ]; do
 	echo "Spawning tasks"
 done
 echo "Updates on log $tmpfile"
-export TEMP_POLLY_JOB_FILE=$tmpfile
+echo $tmpfile > filename.txt
