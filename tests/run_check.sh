@@ -9,6 +9,8 @@ done
 echo "$(($1 * $2))"
 IFS=
 COMPLETE_DATA=$(cat $tmpfile  | grep "status :" | wc -l)
+echo $COMPLETE_DATA
+echo "$(($1 * $2))"
 while [ $COMPLETE_DATA -ne "$(($1 * $2))" ]; do
 	sleep 5
 	echo "Spawning tasks"
