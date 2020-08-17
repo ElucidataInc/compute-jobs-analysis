@@ -1,0 +1,2712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container" style="width: 90%;">
+    <div class="row">
+      <h2 id="text-heading" class="col-md-12" style="text-align: center;"></h2>
+      <div class="col-md-4">
+        <div id="pie-chart" style="width:600px;height:250px;"></div>
+      </div>
+      <div class="col-md-8">
+        <div id="histogram1"></div>
+        <div id="histogram2"></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js">
+  </script>
+  <script id="input-data">
+const fullData = [
+  {
+    "created_ts": 1597663789886,
+    "ended_ts": 1597663840906,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-794bed4c24cf42a0b5b182a2d5080062-55s4n_compute-prod_5967-794bed4c24cf42a0b5b182a2d5080062"
+    ],
+    "started_ts": 1597663802967,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "794bed4c24cf42a0b5b182a2d5080062"
+  },
+  {
+    "created_ts": 1597663794531,
+    "ended_ts": 1597663844513,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-6fdd9853ce3741438a107657936ac47b-q24cf_compute-prod_5967-6fdd9853ce3741438a107657936ac47b"
+    ],
+    "started_ts": 1597663803140,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "6fdd9853ce3741438a107657936ac47b"
+  },
+  {
+    "created_ts": 1597663789912,
+    "ended_ts": 1597663882053,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-8cf131f72d334f90aee36de46273b537-x82r8_compute-prod_5967-8cf131f72d334f90aee36de46273b537"
+    ],
+    "started_ts": 1597663803056,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "8cf131f72d334f90aee36de46273b537"
+  },
+  {
+    "created_ts": 1597663794705,
+    "ended_ts": 1597664047726,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-2e75e3b0a3704f469cfefce0c81eced7-lknz6_compute-prod_5967-2e75e3b0a3704f469cfefce0c81eced7"
+    ],
+    "started_ts": 1597663803702,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "2e75e3b0a3704f469cfefce0c81eced7"
+  },
+  {
+    "created_ts": 1597663794566,
+    "ended_ts": 1597663856858,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-70a8617e99fc45c88234017cf6a2591b-phnn6_compute-prod_5967-70a8617e99fc45c88234017cf6a2591b"
+    ],
+    "started_ts": 1597663803884,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "70a8617e99fc45c88234017cf6a2591b"
+  },
+  {
+    "created_ts": 1597663794902,
+    "ended_ts": 1597663846994,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-adb429fa65b8432cbbaa2882aa1a2864-qg85c_compute-prod_5967-adb429fa65b8432cbbaa2882aa1a2864"
+    ],
+    "started_ts": 1597663803335,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "adb429fa65b8432cbbaa2882aa1a2864"
+  },
+  {
+    "created_ts": 1597663795880,
+    "ended_ts": 1597663997323,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-2879945712ed47d88cd1af30e67ef13b-bcv6v_compute-prod_5967-2879945712ed47d88cd1af30e67ef13b"
+    ],
+    "started_ts": 1597663804424,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "2879945712ed47d88cd1af30e67ef13b"
+  },
+  {
+    "created_ts": 1597663796095,
+    "ended_ts": 1597663858350,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-1548400310b14b25928d061028644063-ftzlc_compute-prod_5967-1548400310b14b25928d061028644063"
+    ],
+    "started_ts": 1597663805015,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "1548400310b14b25928d061028644063"
+  },
+  {
+    "created_ts": 1597663796101,
+    "ended_ts": 1597663843893,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-7cce929c26494cb8a604fdb999fd07d7-mxmw7_compute-prod_5967-7cce929c26494cb8a604fdb999fd07d7"
+    ],
+    "started_ts": 1597663805813,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "7cce929c26494cb8a604fdb999fd07d7"
+  },
+  {
+    "created_ts": 1597663796065,
+    "ended_ts": 1597663848928,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-8f0efe6389a64e80860fd3f7d0ba27c9-j8h7d_compute-prod_5967-8f0efe6389a64e80860fd3f7d0ba27c9"
+    ],
+    "started_ts": 1597663805959,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "8f0efe6389a64e80860fd3f7d0ba27c9"
+  },
+  {
+    "created_ts": 1597663801602,
+    "ended_ts": 1597663853670,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-3bab034eb566435a9d77c929593a27aa-8g7bt_compute-prod_5967-3bab034eb566435a9d77c929593a27aa"
+    ],
+    "started_ts": 1597663808561,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "3bab034eb566435a9d77c929593a27aa"
+  },
+  {
+    "created_ts": 1597663801948,
+    "ended_ts": 1597663848677,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-99e07f8c2023404192576a0241e45174-sb29q_compute-prod_5967-99e07f8c2023404192576a0241e45174"
+    ],
+    "started_ts": 1597663809433,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "99e07f8c2023404192576a0241e45174"
+  },
+  {
+    "created_ts": 1597663802179,
+    "ended_ts": 1597663858168,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-f250bf1a115a47f7b3cd769f03d10c2a-dbhh2_compute-prod_5967-f250bf1a115a47f7b3cd769f03d10c2a"
+    ],
+    "started_ts": 1597663814769,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "f250bf1a115a47f7b3cd769f03d10c2a"
+  },
+  {
+    "created_ts": 1597663802328,
+    "ended_ts": 1597663845524,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-880ac0209c6b4eafb28642fa29ccdd2d-8krg9_compute-prod_5967-880ac0209c6b4eafb28642fa29ccdd2d"
+    ],
+    "started_ts": 1597663807800,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "880ac0209c6b4eafb28642fa29ccdd2d"
+  },
+  {
+    "created_ts": 1597663802513,
+    "ended_ts": 1597663859488,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-c6f72ad680f3440fa8ce11f000d6f30e-bzr5m_compute-prod_5967-c6f72ad680f3440fa8ce11f000d6f30e"
+    ],
+    "started_ts": 1597663815727,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "c6f72ad680f3440fa8ce11f000d6f30e"
+  },
+  {
+    "created_ts": 1597663802486,
+    "ended_ts": 1597664061603,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-7e71cb6ef0c94ceabefa1549c6223e1d-dh4rh_compute-prod_5967-7e71cb6ef0c94ceabefa1549c6223e1d"
+    ],
+    "started_ts": 1597663816590,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "7e71cb6ef0c94ceabefa1549c6223e1d"
+  },
+  {
+    "created_ts": 1597663803428,
+    "ended_ts": 1597664003449,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-399c14aae4594f7bbfe44e3305bf71c3-kll7x_compute-prod_5967-399c14aae4594f7bbfe44e3305bf71c3"
+    ],
+    "started_ts": 1597663817345,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "399c14aae4594f7bbfe44e3305bf71c3"
+  },
+  {
+    "created_ts": 1597663803878,
+    "ended_ts": 1597663863159,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-082bb221ac2641a8bd6dfeec9b264d3f-nptct_compute-prod_5967-082bb221ac2641a8bd6dfeec9b264d3f"
+    ],
+    "started_ts": 1597663818335,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "082bb221ac2641a8bd6dfeec9b264d3f"
+  },
+  {
+    "created_ts": 1597663803881,
+    "ended_ts": 1597663884379,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-ed1717e53bcb410eabba0daff2347453-xm98q_compute-prod_5967-ed1717e53bcb410eabba0daff2347453"
+    ],
+    "started_ts": 1597663819263,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "ed1717e53bcb410eabba0daff2347453"
+  },
+  {
+    "created_ts": 1597663803875,
+    "ended_ts": 1597663987928,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-308e964e1bf54bf5beb9b485eeddc3bc-qjztd_compute-prod_5967-308e964e1bf54bf5beb9b485eeddc3bc"
+    ],
+    "started_ts": 1597663820163,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "308e964e1bf54bf5beb9b485eeddc3bc"
+  },
+  {
+    "created_ts": 1597663809137,
+    "ended_ts": 1597664086689,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-f523b6561ba94a989eea151b9ffe5574-66lfj_compute-prod_5967-f523b6561ba94a989eea151b9ffe5574"
+    ],
+    "started_ts": 1597664040803,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "f523b6561ba94a989eea151b9ffe5574"
+  },
+  {
+    "created_ts": 1597663809737,
+    "ended_ts": 1597663876445,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-c091c9494b2441b2935cbaead7334e5e-xwnvb_compute-prod_5967-c091c9494b2441b2935cbaead7334e5e"
+    ],
+    "started_ts": 1597663839880,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "c091c9494b2441b2935cbaead7334e5e"
+  },
+  {
+    "created_ts": 1597663809982,
+    "ended_ts": 1597664116180,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-37c8753269984582819f8207532622cf-q6bq6_compute-prod_5967-37c8753269984582819f8207532622cf"
+    ],
+    "started_ts": 1597664062970,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "37c8753269984582819f8207532622cf"
+  },
+  {
+    "created_ts": 1597663810318,
+    "ended_ts": 1597664113548,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-03bbca811a664e7194da71750e308204-skhvf_compute-prod_5967-03bbca811a664e7194da71750e308204"
+    ],
+    "started_ts": 1597664055583,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "03bbca811a664e7194da71750e308204"
+  },
+  {
+    "created_ts": 1597663810320,
+    "ended_ts": 1597664087734,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-765a0490deb847c99945ab08fd6a1401-rrj8w_compute-prod_5967-765a0490deb847c99945ab08fd6a1401"
+    ],
+    "started_ts": 1597664043146,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "765a0490deb847c99945ab08fd6a1401"
+  },
+  {
+    "created_ts": 1597663810353,
+    "ended_ts": 1597663946842,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-f8700a28272e4ecd9f1e38f2e806dc4b-jb2rw_compute-prod_5967-f8700a28272e4ecd9f1e38f2e806dc4b"
+    ],
+    "started_ts": 1597663910612,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "f8700a28272e4ecd9f1e38f2e806dc4b"
+  },
+  {
+    "created_ts": 1597663810935,
+    "ended_ts": 1597664085989,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-518c1320d3d444beb72cecea199f4b46-x6wgs_compute-prod_5967-518c1320d3d444beb72cecea199f4b46"
+    ],
+    "started_ts": 1597664026305,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "518c1320d3d444beb72cecea199f4b46"
+  },
+  {
+    "created_ts": 1597663811432,
+    "ended_ts": 1597664048291,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-6e7bc6430eb34262bc08464ca8c130b7-xghp8_compute-prod_5967-6e7bc6430eb34262bc08464ca8c130b7"
+    ],
+    "started_ts": 1597663964645,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "6e7bc6430eb34262bc08464ca8c130b7"
+  },
+  {
+    "created_ts": 1597663811845,
+    "ended_ts": 1597664115340,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-0c6468227ec74699b7c7cc7d53f8d8b0-6glk8_compute-prod_5967-0c6468227ec74699b7c7cc7d53f8d8b0"
+    ],
+    "started_ts": 1597664059267,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "0c6468227ec74699b7c7cc7d53f8d8b0"
+  },
+  {
+    "created_ts": 1597663812003,
+    "ended_ts": 1597664049480,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-8c4e52f885574062adeb8afa6e596248-fq2wb_compute-prod_5967-8c4e52f885574062adeb8afa6e596248"
+    ],
+    "started_ts": 1597663995975,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "8c4e52f885574062adeb8afa6e596248"
+  },
+  {
+    "created_ts": 1597663816875,
+    "ended_ts": 1597664100266,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-03d509ef81de4a5a82ea48702566950a-flvh7_compute-prod_5967-03d509ef81de4a5a82ea48702566950a"
+    ],
+    "started_ts": 1597664063292,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "03d509ef81de4a5a82ea48702566950a"
+  },
+  {
+    "created_ts": 1597663817780,
+    "ended_ts": 1597664102277,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-c9574843bcd2439f80bf3384b2ef49b5-wgddh_compute-prod_5967-c9574843bcd2439f80bf3384b2ef49b5"
+    ],
+    "started_ts": 1597664064632,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "c9574843bcd2439f80bf3384b2ef49b5"
+  },
+  {
+    "created_ts": 1597663817858,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-592ac5a2126a4f3c995fb0dd67881c09-7mzg7_compute-prod_5967-592ac5a2126a4f3c995fb0dd67881c09"
+    ],
+    "started_ts": 1597664067269,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "592ac5a2126a4f3c995fb0dd67881c09"
+  },
+  {
+    "created_ts": 1597663818303,
+    "ended_ts": 1597664076593,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-56f04629019b47eb83e1add86354279f-s9ljz_compute-prod_5967-56f04629019b47eb83e1add86354279f"
+    ],
+    "started_ts": 1597664036375,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "56f04629019b47eb83e1add86354279f"
+  },
+  {
+    "created_ts": 1597663818398,
+    "ended_ts": 1597664108947,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-8988debd9c7341079636e97a1063705d-8v79k_compute-prod_5967-8988debd9c7341079636e97a1063705d"
+    ],
+    "started_ts": 1597664048183,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "8988debd9c7341079636e97a1063705d"
+  },
+  {
+    "created_ts": 1597663818610,
+    "ended_ts": 1597664101389,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-d906bd3adee24dbea413d594b1f15739-q26sj_compute-prod_5967-d906bd3adee24dbea413d594b1f15739"
+    ],
+    "started_ts": 1597664063473,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "d906bd3adee24dbea413d594b1f15739"
+  },
+  {
+    "created_ts": 1597663819009,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-3315348c0b0040ab88aa160d249a144b-hfdd8_compute-prod_5967-3315348c0b0040ab88aa160d249a144b"
+    ],
+    "started_ts": 1597664070174,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "3315348c0b0040ab88aa160d249a144b"
+  },
+  {
+    "created_ts": 1597663819251,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-71b80414c6c64edbb264644098cb207c-n6hcs_compute-prod_5967-71b80414c6c64edbb264644098cb207c"
+    ],
+    "started_ts": 1597664068194,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "71b80414c6c64edbb264644098cb207c"
+  },
+  {
+    "created_ts": 1597663819358,
+    "ended_ts": 1597664139411,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-33ef71bba0164a39adf5d9f683edc4ac-m9nq6_compute-prod_5967-33ef71bba0164a39adf5d9f683edc4ac"
+    ],
+    "started_ts": 1597664066020,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "33ef71bba0164a39adf5d9f683edc4ac"
+  },
+  {
+    "created_ts": 1597663819412,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-68745d4758fc4a81b848036340d882f4-4p9nt_compute-prod_5967-68745d4758fc4a81b848036340d882f4"
+    ],
+    "started_ts": 1597664069182,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "68745d4758fc4a81b848036340d882f4"
+  },
+  {
+    "created_ts": 1597663824973,
+    "ended_ts": 1597664101184,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-24860a90a926495c86e61d2ce8b84c3f-jzpjg_compute-prod_5967-24860a90a926495c86e61d2ce8b84c3f"
+    ],
+    "started_ts": 1597664059547,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "24860a90a926495c86e61d2ce8b84c3f"
+  },
+  {
+    "created_ts": 1597663825335,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-f3293d5d281c4644a079f9fb1a3f589e-fbxng_compute-prod_5967-f3293d5d281c4644a079f9fb1a3f589e"
+    ],
+    "started_ts": 1597664071990,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "f3293d5d281c4644a079f9fb1a3f589e"
+  },
+  {
+    "created_ts": 1597663825437,
+    "ended_ts": 1597664100176,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-045f799ad77e483c97e48763b728ffda-mv6gw_compute-prod_5967-045f799ad77e483c97e48763b728ffda"
+    ],
+    "started_ts": 1597664058996,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "045f799ad77e483c97e48763b728ffda"
+  },
+  {
+    "created_ts": 1597663826044,
+    "ended_ts": 1597664077894,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-e5068d7e3b224c08bc8ec5854b5c2490-nkqg7_compute-prod_5967-e5068d7e3b224c08bc8ec5854b5c2490"
+    ],
+    "started_ts": 1597664036534,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "e5068d7e3b224c08bc8ec5854b5c2490"
+  },
+  {
+    "created_ts": 1597663825918,
+    "ended_ts": 1597664125829,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-86a312d2fd164e19870680ac465a8f0e-s8t8q_compute-prod_5967-86a312d2fd164e19870680ac465a8f0e"
+    ],
+    "started_ts": 1597664065126,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "86a312d2fd164e19870680ac465a8f0e"
+  },
+  {
+    "created_ts": 1597663826178,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-9bc3cfff5d3b47b289767ea24d276883-8dfcn_compute-prod_5967-9bc3cfff5d3b47b289767ea24d276883"
+    ],
+    "started_ts": 1597664074717,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "9bc3cfff5d3b47b289767ea24d276883"
+  },
+  {
+    "created_ts": 1597663826733,
+    "ended_ts": 1597664110056,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-d5a3a913fa9a4d4196d62d5a879e05d8-x4wsp_compute-prod_5967-d5a3a913fa9a4d4196d62d5a879e05d8"
+    ],
+    "started_ts": 1597664049066,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "d5a3a913fa9a4d4196d62d5a879e05d8"
+  },
+  {
+    "created_ts": 1597663826593,
+    "ended_ts": 1597663970379,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-1ffb534169db4465a61ee030c0f57cdf-4qmjs_compute-prod_5967-1ffb534169db4465a61ee030c0f57cdf"
+    ],
+    "started_ts": 1597663932049,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "1ffb534169db4465a61ee030c0f57cdf"
+  },
+  {
+    "created_ts": 1597663827043,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-21cfeda7f0cf4842b9c5d0cf2dcbd430-fdwq4_compute-prod_5967-21cfeda7f0cf4842b9c5d0cf2dcbd430"
+    ],
+    "started_ts": 1597664070983,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "21cfeda7f0cf4842b9c5d0cf2dcbd430"
+  },
+  {
+    "created_ts": 1597663827070,
+    "ended_ts": 1597664113105,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-86a27ff25b724edd91428237d697c750-v7trx_compute-prod_5967-86a27ff25b724edd91428237d697c750"
+    ],
+    "started_ts": 1597664050926,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "86a27ff25b724edd91428237d697c750"
+  },
+  {
+    "created_ts": 1597663832534,
+    "ended_ts": 1597663883096,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-ffc5ed6e96e34019a937bf0cb262954e-n79dk_compute-prod_5967-ffc5ed6e96e34019a937bf0cb262954e"
+    ],
+    "started_ts": 1597663847218,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "ffc5ed6e96e34019a937bf0cb262954e"
+  },
+  {
+    "created_ts": 1597663832904,
+    "ended_ts": 1597664079105,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-6a107a6299414e359b3280b95239e56c-qztkn_compute-prod_5967-6a107a6299414e359b3280b95239e56c"
+    ],
+    "started_ts": 1597664036632,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "6a107a6299414e359b3280b95239e56c"
+  },
+  {
+    "created_ts": 1597663833024,
+    "ended_ts": 1597663917543,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-388395e30aad4a71a183bac338afd9fd-4rxhd_compute-prod_5967-388395e30aad4a71a183bac338afd9fd"
+    ],
+    "started_ts": 1597663879708,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "388395e30aad4a71a183bac338afd9fd"
+  },
+  {
+    "created_ts": 1597663833577,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-ef6a9dcf9acc4ebdbc0e2d1ce712dc9f-cs729_compute-prod_5967-ef6a9dcf9acc4ebdbc0e2d1ce712dc9f"
+    ],
+    "started_ts": 1597664078552,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "ef6a9dcf9acc4ebdbc0e2d1ce712dc9f"
+  },
+  {
+    "created_ts": 1597663833716,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-3ec0c24869f34daba71aca64b7fdf70e-5mqnw_compute-prod_5967-3ec0c24869f34daba71aca64b7fdf70e"
+    ],
+    "started_ts": 1597664075795,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "3ec0c24869f34daba71aca64b7fdf70e"
+  },
+  {
+    "created_ts": 1597663834173,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-e9f70d193ad047ab883dd06fec879ef1-4r92n_compute-prod_5967-e9f70d193ad047ab883dd06fec879ef1"
+    ],
+    "started_ts": 1597664073760,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "e9f70d193ad047ab883dd06fec879ef1"
+  },
+  {
+    "created_ts": 1597663834525,
+    "ended_ts": 1597664086235,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-25fc1a2b40854cef97d617a0cb4d4b78-phllm_compute-prod_5967-25fc1a2b40854cef97d617a0cb4d4b78"
+    ],
+    "started_ts": 1597664044798,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "25fc1a2b40854cef97d617a0cb4d4b78"
+  },
+  {
+    "created_ts": 1597663834710,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-d5425e03f9e44b8dbc72a1dc8151e033-hmbgn_compute-prod_5967-d5425e03f9e44b8dbc72a1dc8151e033"
+    ],
+    "started_ts": 1597664072987,
+    "state": "RUNNING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "d5425e03f9e44b8dbc72a1dc8151e033"
+  },
+  {
+    "created_ts": 1597663834703,
+    "ended_ts": 1597664082262,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-ce14a4425f204346a9ea973fbc02219e-bplpd_compute-prod_5967-ce14a4425f204346a9ea973fbc02219e"
+    ],
+    "started_ts": 1597664039720,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "ce14a4425f204346a9ea973fbc02219e"
+  },
+  {
+    "created_ts": 1597663834862,
+    "ended_ts": 1597663987797,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-83b9635f74cf4da48faadee885e41bf9-8zgmd_compute-prod_5967-83b9635f74cf4da48faadee885e41bf9"
+    ],
+    "started_ts": 1597663844482,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "83b9635f74cf4da48faadee885e41bf9"
+  },
+  {
+    "created_ts": 1597663839616,
+    "ended_ts": 1597663982692,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-ca4c3c482c4443969fe7a958cd5606f0-r8knm_compute-prod_5967-ca4c3c482c4443969fe7a958cd5606f0"
+    ],
+    "started_ts": 1597663945103,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "ca4c3c482c4443969fe7a958cd5606f0"
+  },
+  {
+    "created_ts": 1597663840086,
+    "ended_ts": 1597663887716,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-7b9e592744a74d40915678b5e1d0c410-t7c8b_compute-prod_5967-7b9e592744a74d40915678b5e1d0c410"
+    ],
+    "started_ts": 1597663847657,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "7b9e592744a74d40915678b5e1d0c410"
+  },
+  {
+    "created_ts": 1597663840364,
+    "ended_ts": 1597663933718,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-a8a972770fe1407f8b7d8e93696e93a4-wq422_compute-prod_5967-a8a972770fe1407f8b7d8e93696e93a4"
+    ],
+    "started_ts": 1597663896692,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "a8a972770fe1407f8b7d8e93696e93a4"
+  },
+  {
+    "created_ts": 1597663841197,
+    "ended_ts": 1597664066918,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "c6b2e84137e44a5d81e306059a747078"
+  },
+  {
+    "created_ts": 1597663841305,
+    "ended_ts": 1597664108377,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-6b34dbe8531442a5908430c52fd5f401-4gnz7_compute-prod_5967-6b34dbe8531442a5908430c52fd5f401"
+    ],
+    "started_ts": 1597664041742,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "6b34dbe8531442a5908430c52fd5f401"
+  },
+  {
+    "created_ts": 1597663841946,
+    "ended_ts": 1597663888777,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-fc759a4c30154836ae09eb1867b86f7d-6xczg_compute-prod_5967-fc759a4c30154836ae09eb1867b86f7d"
+    ],
+    "started_ts": 1597663852189,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "fc759a4c30154836ae09eb1867b86f7d"
+  },
+  {
+    "created_ts": 1597663842285,
+    "ended_ts": 1597664106169,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-8d25fe7d26244488984ac1b630ab7950-zzbpz_compute-prod_5967-8d25fe7d26244488984ac1b630ab7950"
+    ],
+    "started_ts": 1597664040137,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "8d25fe7d26244488984ac1b630ab7950"
+  },
+  {
+    "created_ts": 1597663842487,
+    "ended_ts": 1597663935943,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-d4e381b6f27846bf956c5389691eb9b6-4x6r4_compute-prod_5967-d4e381b6f27846bf956c5389691eb9b6"
+    ],
+    "started_ts": 1597663899792,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "d4e381b6f27846bf956c5389691eb9b6"
+  },
+  {
+    "created_ts": 1597663842558,
+    "ended_ts": 1597664013790,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "c80348c0547f45f7bce07169a0b80d29"
+  },
+  {
+    "created_ts": 1597663842616,
+    "ended_ts": 1597664053191,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-f682d0a59e004d2ea9e519e0c349734c-lhtdr_compute-prod_5967-f682d0a59e004d2ea9e519e0c349734c"
+    ],
+    "started_ts": 1597663968080,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "f682d0a59e004d2ea9e519e0c349734c"
+  },
+  {
+    "created_ts": 1597663846982,
+    "ended_ts": 1597664082360,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-e1a8a056a0cf430193558209fa265d12-tjl58_compute-prod_5967-e1a8a056a0cf430193558209fa265d12"
+    ],
+    "started_ts": 1597663980300,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "e1a8a056a0cf430193558209fa265d12"
+  },
+  {
+    "created_ts": 1597663847212,
+    "ended_ts": 0,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "PENDING",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "48c5c82d794e407a9e9690e9210be7e9"
+  },
+  {
+    "created_ts": 1597663847683,
+    "ended_ts": 1597664054061,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-b9cadbba784c4dbfa781cb508e05c301-x5d4v_compute-prod_5967-b9cadbba784c4dbfa781cb508e05c301"
+    ],
+    "started_ts": 1597663971061,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "b9cadbba784c4dbfa781cb508e05c301"
+  },
+  {
+    "created_ts": 1597663848781,
+    "ended_ts": 1597664052716,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-a8f21e54754d40b3aba976ccd83afee2-cs6x7_compute-prod_5967-a8f21e54754d40b3aba976ccd83afee2"
+    ],
+    "started_ts": 1597663972839,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "a8f21e54754d40b3aba976ccd83afee2"
+  },
+  {
+    "created_ts": 1597663848816,
+    "ended_ts": 1597663919929,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-c5c5905805e54e17b39307f9ea80ed39-zhp68_compute-prod_5967-c5c5905805e54e17b39307f9ea80ed39"
+    ],
+    "started_ts": 1597663883353,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "c5c5905805e54e17b39307f9ea80ed39"
+  },
+  {
+    "created_ts": 1597663849668,
+    "ended_ts": 1597664084197,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "8bfb9c1a711d4258a9074c2ef4214494"
+  },
+  {
+    "created_ts": 1597663850143,
+    "ended_ts": 1597664105784,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-3cc46e45f8184bc78e54816e95aed51a-twl4r_compute-prod_5967-3cc46e45f8184bc78e54816e95aed51a"
+    ],
+    "started_ts": 1597664039549,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "3cc46e45f8184bc78e54816e95aed51a"
+  },
+  {
+    "created_ts": 1597663850307,
+    "ended_ts": 1597663896194,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-acac4bf3f1b04a7cbc363f657ba0f95f-njppt_compute-prod_5967-acac4bf3f1b04a7cbc363f657ba0f95f"
+    ],
+    "started_ts": 1597663859822,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "acac4bf3f1b04a7cbc363f657ba0f95f"
+  },
+  {
+    "created_ts": 1597663850411,
+    "ended_ts": 1597664109787,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-b3b483ae6395421a82579eb39cc14ed6-ksjns_compute-prod_5967-b3b483ae6395421a82579eb39cc14ed6"
+    ],
+    "started_ts": 1597664050009,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "b3b483ae6395421a82579eb39cc14ed6"
+  },
+  {
+    "created_ts": 1597663850667,
+    "ended_ts": 1597664057911,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-94c3d8c195554b1abc117885fee50541-7kx5v_compute-prod_5967-94c3d8c195554b1abc117885fee50541"
+    ],
+    "started_ts": 1597663972694,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "94c3d8c195554b1abc117885fee50541"
+  },
+  {
+    "created_ts": 1597663854624,
+    "ended_ts": 1597663897090,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-ad9584190d164fd38cb8a0f39de3715a-gqrcv_compute-prod_5967-ad9584190d164fd38cb8a0f39de3715a"
+    ],
+    "started_ts": 1597663861384,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "ad9584190d164fd38cb8a0f39de3715a"
+  },
+  {
+    "created_ts": 1597663854961,
+    "ended_ts": 1597664152614,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "f3f55f1131ca4f69b537ea316b911995"
+  },
+  {
+    "created_ts": 1597663855243,
+    "ended_ts": 1597664048312,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-6f170a47d8da40cf81718346b274879d-4gw6t_compute-prod_5967-6f170a47d8da40cf81718346b274879d"
+    ],
+    "started_ts": 1597663966745,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "6f170a47d8da40cf81718346b274879d"
+  },
+  {
+    "created_ts": 1597663856223,
+    "ended_ts": 1597663911752,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-943316f3bfdd4f188aa3e0f16651b4cf-hjvx2_compute-prod_5967-943316f3bfdd4f188aa3e0f16651b4cf"
+    ],
+    "started_ts": 1597663875355,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "943316f3bfdd4f188aa3e0f16651b4cf"
+  },
+  {
+    "created_ts": 1597663856508,
+    "ended_ts": 1597664084997,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-6b11cb0c4b7945ffb60ab89473700733-7zx8h_compute-prod_5967-6b11cb0c4b7945ffb60ab89473700733"
+    ],
+    "started_ts": 1597664041946,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "6b11cb0c4b7945ffb60ab89473700733"
+  },
+  {
+    "created_ts": 1597663857559,
+    "ended_ts": 1597664079982,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-53ccccc5c4a44d0b88b092e46bc0dd85-9kx2d_compute-prod_5967-53ccccc5c4a44d0b88b092e46bc0dd85"
+    ],
+    "started_ts": 1597663998724,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "53ccccc5c4a44d0b88b092e46bc0dd85"
+  },
+  {
+    "created_ts": 1597663858043,
+    "ended_ts": 1597664149740,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "61fc7d6620d747db89fdfc45ebf37905"
+  },
+  {
+    "created_ts": 1597663858201,
+    "ended_ts": 1597664014315,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "8f4d006591604f12aa1449d0d523f979"
+  },
+  {
+    "created_ts": 1597663858431,
+    "ended_ts": 1597663901358,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-528abffdfa3a460981e31da83f38de0b-8gps2_compute-prod_5967-528abffdfa3a460981e31da83f38de0b"
+    ],
+    "started_ts": 1597663864217,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "528abffdfa3a460981e31da83f38de0b"
+  },
+  {
+    "created_ts": 1597663858479,
+    "ended_ts": 1597664013456,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "742d1d17cf5d4e809df4b8b2da918a96"
+  },
+  {
+    "created_ts": 1597663862262,
+    "ended_ts": 1597664051570,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [
+      "5967-c95c1a7b8cbd48578466d9c0838093c7-j4df2_compute-prod_5967-c95c1a7b8cbd48578466d9c0838093c7"
+    ],
+    "started_ts": 1597664011087,
+    "state": "SUCCESS",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "c95c1a7b8cbd48578466d9c0838093c7"
+  },
+  {
+    "created_ts": 1597663863081,
+    "ended_ts": 1597664013837,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "50c94b04bd4c48cabd592c709a0f2936"
+  },
+  {
+    "created_ts": 1597663863225,
+    "ended_ts": 1597664081595,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "1e78a73c5287420f8edd97d8656956e1"
+  },
+  {
+    "created_ts": 1597663864209,
+    "ended_ts": 1597664086232,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "9511d9fccf16430481916208c5792b88"
+  },
+  {
+    "created_ts": 1597663864278,
+    "ended_ts": 1597664014321,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "6a39e01847164f319a5bb88e79bf940e"
+  },
+  {
+    "created_ts": 1597663864718,
+    "ended_ts": 1597664085180,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "2dceab4fb63c48278c9ac7e986e42060"
+  },
+  {
+    "created_ts": 1597663864944,
+    "ended_ts": 1597664080464,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "e700b1a0521b4c0684fbf070fffdb2b3"
+  },
+  {
+    "created_ts": 1597663864968,
+    "ended_ts": 1597664087053,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "636cc5f342da46c5a6f289421ed3bc77"
+  },
+  {
+    "created_ts": 1597663865005,
+    "ended_ts": 1597664088012,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "6149dd4883f8413ca6ce8dc12a829553"
+  },
+  {
+    "created_ts": 1597663865025,
+    "ended_ts": 1597664083276,
+    "job_name": "This is a job for testing bust mode",
+    "log_ids": [],
+    "started_ts": 0,
+    "state": "ERROR",
+    "creator_id": 641,
+    "config_json": {
+      "cpu": "1",
+      "memory": "1Gi",
+      "image": "ubuntu",
+      "tag": "latest",
+      "machineType": null,
+      "cloud_provider": "azure",
+      "command": [
+        "/bin/bash",
+        "-c",
+        "TERM=xterm free -h; echo '\nnumber of vCPU';nproc;sleep 30"
+      ]
+    },
+    "project_id": 5967,
+    "job_id": "47390fe3fba84354b3aabee7b90b027c"
+  }
+];
+  </script>
+  <script id='custom-javascript'>
+    (function () {
+      const reqData = window.location.href.split("/")[window.location.href.split("/").length - 1].split('-');
+      document.getElementById('text-heading').innerHTML = `Simulating ${fullData.length} jobs with ${reqData[3]} user and each running ${reqData[5]} jobs which takes 30 seconds`
+      const x = [];
+      for (var i = 0; i < fullData.length; i++) {
+        if (fullData[i].state == 'SUCCESS') {
+          x[i] = Math.round((fullData[i].started_ts - fullData[i].created_ts) / 1000);
+        }
+      }
+
+      const trace = {
+        x: x,
+        type: 'histogram',
+        xbins: {
+          size: 10,
+          end: Math.max(...x) + 10,
+          start: 0
+        }
+      };
+      const layout = {
+        title: 'Resource allocation time',
+        bargap: 0.05,
+        xaxis: {
+          title: "time (sec)",
+          tickmode: "linear", //  If "linear", the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick`
+          tick0: 0,
+          dtick: 10
+        },
+        yaxis: {
+          title: "Count"
+        }
+      };
+      const data = [trace];
+      Plotly.newPlot('histogram1', data, layout);
+
+    })();
+
+    (function () {
+      const x = [];
+      for (var i = 0; i < fullData.length; i++) {
+        if (fullData[i].state == 'SUCCESS') {
+          x[i] = Math.round((fullData[i].ended_ts - fullData[i].started_ts) / 1000) - 30;
+        }
+      }
+
+      const trace = {
+        x: x,
+        type: 'histogram',
+        xbins: {
+          size: 10,
+          end: Math.max(...x) + 10,
+          start: 0
+        }
+      };
+      const layout = {
+        title: 'Docker pull time + Status update time',
+        bargap: 0.05,
+        xaxis: {
+          title: "time (sec)",
+          tickmode: "linear", //  If "linear", the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick`
+          tick0: 0,
+          dtick: 10
+        },
+        yaxis: {
+          title: "Count"
+        }
+      };
+      const data = [trace];
+      Plotly.newPlot('histogram2', data, layout);
+
+    })();
+
+    (function () {
+      let x = {};
+      for (var i = 0; i < fullData.length; i++) {
+        if (Object.keys(x).indexOf(fullData[i].state) < 0) {
+          x[fullData[i].state] = 1;
+        } else {
+          x[fullData[i].state] += 1;
+        }
+      }
+      const finalKeys = Object.keys(x);
+      const finalKeyData = [];
+      for (var i = 0; i < finalKeys.length; i++) {
+        finalKeyData.push(x[finalKeys[i]])
+      }
+      const data = [{
+        values: finalKeyData,
+        labels: finalKeys,
+        type: 'pie'
+      }];
+
+      const layout = {
+        title: 'Different state %',
+        height: 400,
+        width: 500
+      };
+      Plotly.newPlot('pie-chart', data, layout);
+    })()
+  </script>
+</body>
+
+</html>
