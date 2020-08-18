@@ -97,7 +97,6 @@ jobs:
         cp -R output ~/pollycli/test/jobs/results/
         node ~/pollycli/test/jobs/update-job.js ${{ github.event.inputs.polly_cpu }} ${{ github.event.inputs.polly_memory }} ${{ github.event.inputs.time_of_job }}
         cat ~/pollycli/test/jobs/sampleJob.json
-        exit 0
         cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
         TEMP_POLLY_JOB_FILE=$(cat /home/runner/pollycli/test/jobs/filename.txt)
         cd -
