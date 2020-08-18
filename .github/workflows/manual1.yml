@@ -47,8 +47,6 @@ jobs:
         B="$(cut -d'/' -f3 <<<${{ github.event.inputs.path_to_logs }})"
         sudo node tests/update-env.js $B
         cat /usr/local/lib/node_modules/@elucidatainc/pollycli/src/env.json
-        echo $B
-        exit 0
         export POLLY_USER_NAME=${{ github.event.inputs.username }}
         export POLLY_USER_PASSWORD=${{ github.event.inputs.password }}
         sudo apt-get install expect
@@ -74,9 +72,10 @@ jobs:
         TEMP_POLLY_JOB_FILE=$(cat /home/runner/pollycli/test/jobs/outputfile.txt)
         cd -
         DATE_NOW_POLLY=`date +%d-%m-%Y`
-        mkdir -p $(pwd)/output/$DATE_NOW_POLLY
-        cp $TEMP_POLLY_JOB_FILE $(pwd)/output/$DATE_NOW_POLLY/
+        mkdir -p $(pwd)/output/$DATE_NOW_POLLY/$B
+        cp $TEMP_POLLY_JOB_FILE $(pwd)/output/$DATE_NOW_POLLY/$B
         cp $(pwd)/output/index.html $(pwd)/output/$DATE_NOW_POLLY/index.html
+        cp $(pwd)/output/index.html $(pwd)/output/$DATE_NOW_POLLY/$B/index.html
         git status
         git config --global user.email ${{ github.event.inputs.username }}
         git config --global user.name ${{ github.event.inputs.username }}
