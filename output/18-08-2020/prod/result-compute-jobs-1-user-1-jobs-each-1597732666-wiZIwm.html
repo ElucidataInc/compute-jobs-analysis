@@ -69,7 +69,7 @@ const fullData = [
   <script id='custom-javascript'>
     (function () {
       const reqData = window.location.href.split("/")[window.location.href.split("/").length - 1].split('-');
-      document.getElementById('text-heading').innerHTML = `Simulating ${fullData.length} jobs with ${reqData[3]} user and each running ${reqData[5]} jobs which takes 30 seconds`
+      document.getElementById('text-heading').innerHTML = `Simulating ${fullData.length} jobs with ${reqData[3]} user and each running ${reqData[5]} jobs which takes ${fullData[0].config_json.command[2].split('sleep')[1].trim()} seconds`
       const x = [];
       for (var i = 0; i < fullData.length; i++) {
         if (fullData[i].state == 'SUCCESS') {
