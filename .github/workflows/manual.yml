@@ -73,6 +73,7 @@ jobs:
       run: |
         sudo npm install -g @elucidatainc/pollycli
         sudo node tests/update-env.js ${{ github.event.inputs.polly_env }}
+        cat /usr/local/lib/node_modules/@elucidatainc/pollycli/src/env.json
         export POLLY_USER_NAME=${{ github.event.inputs.username }}
         export POLLY_USER_PASSWORD=${{ github.event.inputs.password }}
         sudo apt-get install expect
