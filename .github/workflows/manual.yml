@@ -33,7 +33,21 @@ on:
         description: 'Polly workspace id to run the simulation'
         # Input has to be provided for the workflow to run
         required: true
-    
+      polly_cpu:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'No of cores'
+        # Input has to be provided for the workflow to run
+        required: true
+      polly_memory:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Amount of memory in Gi'
+        # Input has to be provided for the workflow to run
+        required: true
+      time_of_job:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Job run time in seconds'
+        # Input has to be provided for the workflow to run
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -74,7 +88,9 @@ jobs:
         cp -R tests/* ~/pollycli/test/jobs/
         cp -R input ~/pollycli/test/jobs/results/
         cp -R output ~/pollycli/test/jobs/results/
+        node ~/pollycli/test/jobs/update-job.js ${{ github.event.inputs.polly_cpu }} ${{ github.event.inputs.polly_memory }} ${{ github.event.inputs.time_of_job }}
         cat ~/pollycli/test/jobs/sampleJob.json
+        exit 0
         cd ~/pollycli && npm run test-bust ${{ github.event.inputs.how_many_users }} ${{ github.event.inputs.each_users_how_many_jobs }} ${{ github.event.inputs.workspace_id }}
         TEMP_POLLY_JOB_FILE=$(cat /home/runner/pollycli/test/jobs/filename.txt)
         cd -
