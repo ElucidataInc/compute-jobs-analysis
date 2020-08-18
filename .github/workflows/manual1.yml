@@ -45,6 +45,8 @@ jobs:
         sudo npm install -g @elucidatainc/pollycli
         echo ${{ github.event.inputs.path_to_logs }}
         B="$(cut -d'/' -f3 <<<${{ github.event.inputs.path_to_logs }})"
+        sudo node tests/update-env.js $B
+        cat /usr/local/lib/node_modules/@elucidatainc/pollycli/src/env.json
         echo $B
         exit 0
         export POLLY_USER_NAME=${{ github.event.inputs.username }}
