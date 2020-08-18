@@ -23,6 +23,7 @@
       <div class="col-md-8">
         <div id="histogram1"></div>
         <div id="histogram2"></div>
+        <div id="histogram3"></div>
         <div></div>
       </div>
     </div>
@@ -71,7 +72,7 @@
         }
       };
       const data = [trace];
-      Plotly.newPlot('histogram1', data, layout);
+      Plotly.newPlot('histogra2', data, layout);
 
     })();
 
@@ -79,7 +80,7 @@
       const x = [];
       for (var i = 0; i < fullData.length; i++) {
         if (fullData[i].state == 'SUCCESS') {
-          x[i] = Math.round((fullData[i].ended_ts - fullData[i].started_ts) / 1000) - 30;
+          x[i] = Math.round((fullData[i].ended_ts - fullData[i].started_ts) / 1000) - parseInt(fullData[0].config_json.command[2].split('sleep')[1].trim());
         }
       }
 
@@ -106,7 +107,42 @@
         }
       };
       const data = [trace];
-      Plotly.newPlot('histogram2', data, layout);
+      Plotly.newPlot('histogram3', data, layout);
+
+    })();
+    
+    (function () {
+      const x = [];
+      for (var i = 0; i < fullData.length; i++) {
+        if (fullData[i].state == 'SUCCESS') {
+          x[i] = Math.round((fullData[i].ended_ts - fullData[i].created_ts) / 1000);
+        }
+      }
+
+      const trace = {
+        x: x,
+        type: 'histogram',
+        xbins: {
+          size: 10,
+          end: Math.max(...x) + 10,
+          start: 0
+        }
+      };
+      const layout = {
+        title: 'Docker excution time',
+        bargap: 0.05,
+        xaxis: {
+          title: "time (sec)",
+          tickmode: "linear", //  If "linear", the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick`
+          tick0: 0,
+          dtick: 10
+        },
+        yaxis: {
+          title: "Count"
+        }
+      };
+      const data = [trace];
+      Plotly.newPlot('histogram1', data, layout);
 
     })();
 
