@@ -1,0 +1,11 @@
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ def816da56054a8ea75fe99606426a0b ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id def816da56054a8ea75fe99606426a0b
+logs   : polly jobs logs --workspace-id 5803 --job-id def816da56054a8ea75fe99606426a0b
+cancel : polly jobs cancel --workspace-id 5803 --job-id def816da56054a8ea75fe99606426a0b
