@@ -1,0 +1,330 @@
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 33cc7fe544de4f7bb463dec334de533d ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 33cc7fe544de4f7bb463dec334de533d
+logs   : polly jobs logs --workspace-id 5803 --job-id 33cc7fe544de4f7bb463dec334de533d
+cancel : polly jobs cancel --workspace-id 5803 --job-id 33cc7fe544de4f7bb463dec334de533d
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 1a304fe9284c4acbb0bc6ab380f327e0 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 1a304fe9284c4acbb0bc6ab380f327e0
+logs   : polly jobs logs --workspace-id 5803 --job-id 1a304fe9284c4acbb0bc6ab380f327e0
+cancel : polly jobs cancel --workspace-id 5803 --job-id 1a304fe9284c4acbb0bc6ab380f327e0
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 9e9373b3420441c082e8f983be4841cf ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 9e9373b3420441c082e8f983be4841cf
+logs   : polly jobs logs --workspace-id 5803 --job-id 9e9373b3420441c082e8f983be4841cf
+cancel : polly jobs cancel --workspace-id 5803 --job-id 9e9373b3420441c082e8f983be4841cf
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ f404c011d50d404897f1698c90ff8b1a ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id f404c011d50d404897f1698c90ff8b1a
+logs   : polly jobs logs --workspace-id 5803 --job-id f404c011d50d404897f1698c90ff8b1a
+cancel : polly jobs cancel --workspace-id 5803 --job-id f404c011d50d404897f1698c90ff8b1a
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 759c43bb104948efbaa212ac4dda2a76 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 759c43bb104948efbaa212ac4dda2a76
+logs   : polly jobs logs --workspace-id 5803 --job-id 759c43bb104948efbaa212ac4dda2a76
+cancel : polly jobs cancel --workspace-id 5803 --job-id 759c43bb104948efbaa212ac4dda2a76
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 8a5e6aeafc684d55b6d6955f79f81b13 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 8a5e6aeafc684d55b6d6955f79f81b13
+logs   : polly jobs logs --workspace-id 5803 --job-id 8a5e6aeafc684d55b6d6955f79f81b13
+cancel : polly jobs cancel --workspace-id 5803 --job-id 8a5e6aeafc684d55b6d6955f79f81b13
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 1d9fcb951eaa462fbcd497b0a3ef6ac3 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 1d9fcb951eaa462fbcd497b0a3ef6ac3
+logs   : polly jobs logs --workspace-id 5803 --job-id 1d9fcb951eaa462fbcd497b0a3ef6ac3
+cancel : polly jobs cancel --workspace-id 5803 --job-id 1d9fcb951eaa462fbcd497b0a3ef6ac3
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ f604637a717d43818e4ae98dd69aff26 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id f604637a717d43818e4ae98dd69aff26
+logs   : polly jobs logs --workspace-id 5803 --job-id f604637a717d43818e4ae98dd69aff26
+cancel : polly jobs cancel --workspace-id 5803 --job-id f604637a717d43818e4ae98dd69aff26
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 8604f4f7af8c4187b940f7d4761154f1 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 8604f4f7af8c4187b940f7d4761154f1
+logs   : polly jobs logs --workspace-id 5803 --job-id 8604f4f7af8c4187b940f7d4761154f1
+cancel : polly jobs cancel --workspace-id 5803 --job-id 8604f4f7af8c4187b940f7d4761154f1
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ c1f3c732d6624241b77f5283bbacd56a ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id c1f3c732d6624241b77f5283bbacd56a
+logs   : polly jobs logs --workspace-id 5803 --job-id c1f3c732d6624241b77f5283bbacd56a
+cancel : polly jobs cancel --workspace-id 5803 --job-id c1f3c732d6624241b77f5283bbacd56a
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ bdc95d58364c4702830b76b8e1f9199a ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id bdc95d58364c4702830b76b8e1f9199a
+logs   : polly jobs logs --workspace-id 5803 --job-id bdc95d58364c4702830b76b8e1f9199a
+cancel : polly jobs cancel --workspace-id 5803 --job-id bdc95d58364c4702830b76b8e1f9199a
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ bead3bfd68c648348dd75792f58be5d8 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id bead3bfd68c648348dd75792f58be5d8
+logs   : polly jobs logs --workspace-id 5803 --job-id bead3bfd68c648348dd75792f58be5d8
+cancel : polly jobs cancel --workspace-id 5803 --job-id bead3bfd68c648348dd75792f58be5d8
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 01f2adf06f14467ab6dfb3a0076f1650 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 01f2adf06f14467ab6dfb3a0076f1650
+logs   : polly jobs logs --workspace-id 5803 --job-id 01f2adf06f14467ab6dfb3a0076f1650
+cancel : polly jobs cancel --workspace-id 5803 --job-id 01f2adf06f14467ab6dfb3a0076f1650
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 8f7f632fac3c431a91873b7fad8d59a1 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 8f7f632fac3c431a91873b7fad8d59a1
+logs   : polly jobs logs --workspace-id 5803 --job-id 8f7f632fac3c431a91873b7fad8d59a1
+cancel : polly jobs cancel --workspace-id 5803 --job-id 8f7f632fac3c431a91873b7fad8d59a1
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 2433c5560b844e5eb0f267cd3e6e8cfa ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 2433c5560b844e5eb0f267cd3e6e8cfa
+logs   : polly jobs logs --workspace-id 5803 --job-id 2433c5560b844e5eb0f267cd3e6e8cfa
+cancel : polly jobs cancel --workspace-id 5803 --job-id 2433c5560b844e5eb0f267cd3e6e8cfa
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 3807ee0fb9cc48dfa1e088e074972038 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 3807ee0fb9cc48dfa1e088e074972038
+logs   : polly jobs logs --workspace-id 5803 --job-id 3807ee0fb9cc48dfa1e088e074972038
+cancel : polly jobs cancel --workspace-id 5803 --job-id 3807ee0fb9cc48dfa1e088e074972038
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 1929497168104966a6d0f5616883d154 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 1929497168104966a6d0f5616883d154
+logs   : polly jobs logs --workspace-id 5803 --job-id 1929497168104966a6d0f5616883d154
+cancel : polly jobs cancel --workspace-id 5803 --job-id 1929497168104966a6d0f5616883d154
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 801fd90d281945068ae89d9596059d10 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 801fd90d281945068ae89d9596059d10
+logs   : polly jobs logs --workspace-id 5803 --job-id 801fd90d281945068ae89d9596059d10
+cancel : polly jobs cancel --workspace-id 5803 --job-id 801fd90d281945068ae89d9596059d10
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 8a5e4641aa444ee6bb675d410777f025 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 8a5e4641aa444ee6bb675d410777f025
+logs   : polly jobs logs --workspace-id 5803 --job-id 8a5e4641aa444ee6bb675d410777f025
+cancel : polly jobs cancel --workspace-id 5803 --job-id 8a5e4641aa444ee6bb675d410777f025
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 784fabcd33a64baba3048273c06327ec ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 784fabcd33a64baba3048273c06327ec
+logs   : polly jobs logs --workspace-id 5803 --job-id 784fabcd33a64baba3048273c06327ec
+cancel : polly jobs cancel --workspace-id 5803 --job-id 784fabcd33a64baba3048273c06327ec
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ c2359d5cdbe2444eb6a51ed894de6dd0 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id c2359d5cdbe2444eb6a51ed894de6dd0
+logs   : polly jobs logs --workspace-id 5803 --job-id c2359d5cdbe2444eb6a51ed894de6dd0
+cancel : polly jobs cancel --workspace-id 5803 --job-id c2359d5cdbe2444eb6a51ed894de6dd0
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ a68c712c17504b6486edd68c1a9a6c1f ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id a68c712c17504b6486edd68c1a9a6c1f
+logs   : polly jobs logs --workspace-id 5803 --job-id a68c712c17504b6486edd68c1a9a6c1f
+cancel : polly jobs cancel --workspace-id 5803 --job-id a68c712c17504b6486edd68c1a9a6c1f
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ bf9d6ff1132c4a53bdb8c6ed3859371d ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id bf9d6ff1132c4a53bdb8c6ed3859371d
+logs   : polly jobs logs --workspace-id 5803 --job-id bf9d6ff1132c4a53bdb8c6ed3859371d
+cancel : polly jobs cancel --workspace-id 5803 --job-id bf9d6ff1132c4a53bdb8c6ed3859371d
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 28b55f120ae842269edb95dcbfc433a4 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 28b55f120ae842269edb95dcbfc433a4
+logs   : polly jobs logs --workspace-id 5803 --job-id 28b55f120ae842269edb95dcbfc433a4
+cancel : polly jobs cancel --workspace-id 5803 --job-id 28b55f120ae842269edb95dcbfc433a4
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ d2623c3fc9cf4ae686c415d1d61af177 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id d2623c3fc9cf4ae686c415d1d61af177
+logs   : polly jobs logs --workspace-id 5803 --job-id d2623c3fc9cf4ae686c415d1d61af177
+cancel : polly jobs cancel --workspace-id 5803 --job-id d2623c3fc9cf4ae686c415d1d61af177
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 5dfb654327ea49f3b24ec930c354b9ee ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 5dfb654327ea49f3b24ec930c354b9ee
+logs   : polly jobs logs --workspace-id 5803 --job-id 5dfb654327ea49f3b24ec930c354b9ee
+cancel : polly jobs cancel --workspace-id 5803 --job-id 5dfb654327ea49f3b24ec930c354b9ee
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 734c7b97344c4249a1a42ff33b97843c ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 734c7b97344c4249a1a42ff33b97843c
+logs   : polly jobs logs --workspace-id 5803 --job-id 734c7b97344c4249a1a42ff33b97843c
+cancel : polly jobs cancel --workspace-id 5803 --job-id 734c7b97344c4249a1a42ff33b97843c
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 3af0bb72e5f14e3ba72146bbbf596b64 ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 3af0bb72e5f14e3ba72146bbbf596b64
+logs   : polly jobs logs --workspace-id 5803 --job-id 3af0bb72e5f14e3ba72146bbbf596b64
+cancel : polly jobs cancel --workspace-id 5803 --job-id 3af0bb72e5f14e3ba72146bbbf596b64
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ 6f7c54c379a94033a0fd4377262e8d3e ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id 6f7c54c379a94033a0fd4377262e8d3e
+logs   : polly jobs logs --workspace-id 5803 --job-id 6f7c54c379a94033a0fd4377262e8d3e
+cancel : polly jobs cancel --workspace-id 5803 --job-id 6f7c54c379a94033a0fd4377262e8d3e
+Success: Submitted the job to run!
+╔══════════════╤══════════════════════════════════╗
+║ Workspace ID │ Job ID                           ║
+╟──────────────┼──────────────────────────────────╢
+║ 5803         │ c0e52a27bf2e47a788ba318c24295dbf ║
+╚══════════════╧══════════════════════════════════╝
+
+Useful commands:
+status : polly jobs status --workspace-id 5803 --job-id c0e52a27bf2e47a788ba318c24295dbf
+logs   : polly jobs logs --workspace-id 5803 --job-id c0e52a27bf2e47a788ba318c24295dbf
+cancel : polly jobs cancel --workspace-id 5803 --job-id c0e52a27bf2e47a788ba318c24295dbf
