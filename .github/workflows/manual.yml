@@ -40,7 +40,7 @@ on:
         required: true
       polly_memory:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Amount of memory in Gi'
+        description: 'Amount of memory eg. 256Mi, 1Gi'
         # Input has to be provided for the workflow to run
         required: true
       time_of_job:
@@ -110,5 +110,5 @@ jobs:
         git config --global user.name ${{ github.event.inputs.username }}
         git add .
         git commit -m "Adding a new job file ${TEMP_POLLY_JOB_FILE}"
-        git fetch origin master
-        git push origin HEAD:master
+        git fetch origin $(git branch --show-current)
+        git push origin HEAD:$(git branch --show-current)
