@@ -24,9 +24,9 @@
         `https://api.github.com/repos/ElucidataInc/compute-jobs-analysis/contents${window.location.href.split('compute-jobs-analysis')[1]}`
         );
       const data = await response.json();
-      if(window.location.href.endsWith("/output/")) {
-        data.sort((x, y) => (new Date(y.name).getTime()) - (new Date(x.name).getTime()));
-      }
+      
+      data.sort((x, y) => (new Date(y.name).getTime()) - (new Date(x.name).getTime()));
+
       let htmlString = '<ul>';
       for (let file of data) {
         if (file.name !== 'index.html') {
