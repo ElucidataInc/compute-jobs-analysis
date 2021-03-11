@@ -81,5 +81,5 @@ jobs:
         git config --global user.name ${{ github.event.inputs.username }}
         git add .
         git commit -m "Adding a new job file ${TEMP_POLLY_JOB_FILE}"
-        git fetch origin master
-        git push origin HEAD:master
+        git fetch origin $(git branch --show-current)
+        git push origin HEAD:$(git branch --show-current)
